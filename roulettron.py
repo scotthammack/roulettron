@@ -17,7 +17,7 @@ api = tweepy.API(auth)
 class MyStreamListener(tweepy.StreamListener):
 	def on_status(self, status):
 		encoded_status = status.text.encode('utf-8')
-		player = status.author.screen_name
+		player = status.author.screen_name.encode('utf-8')
 		print "Got a tweet from %s!" % player
 		if encoded_status.startswith('@%s' % bot_username):
 			play_game(player, status.id, False)
